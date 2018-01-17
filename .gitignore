@@ -1,5 +1,5 @@
-backup
-bundle
-.netrwhist
+vim/backup
+vim/undo
 
+.netrwhist
 .*.sw[a-z]

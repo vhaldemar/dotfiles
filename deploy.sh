@@ -5,13 +5,14 @@ for name in vim vimrc tmux.conf; do
         mv $HOME/.$name $HOME/.$name\.bak
     fi
 
-    ln -s $(pwd)/$name $HOME/.$name
+    ln -s $DIR/$name $HOME/.$name
 done
-
-git clone git clone https://github.com/VundleVim/Vundle.vim.git $DIR/bundle/Vundle.vim
 
 vim +PluginInstall +qall
 
 # sudo apt-get install python-flake8 ghc-mod
 
-cd $DIR/bundle/YouCompleteMe && ./install.sh && cd -
+mkdir $DIR/vim/backup
+mkdir $DIR/vim/undo
+
+cd $DIR/vim/bundle/YouCompleteMe && ./install.sh && cd -

@@ -16,10 +16,9 @@ set backspace=indent,eol,start	" more powerful backspacing
 " set textwidth=0		" Don't wrap lines by default 
 set backupcopy=yes	" Keep a backup file
 set backupdir=~/.vim/backup
-if has("persistent_undo")
-	set undofile		" Persistent undo
-	set undodir=~/.vim/undo
-endif
+
+set undofile		" Persistent undo
+set undodir=~/.vim/undo
 
 set viminfo='20,\"50	" read/write file .viminfo, store<=50 lines of registers
 set history=50		" keep 50 lines of command line history
