@@ -26,6 +26,7 @@ set history=50		" keep 50 lines of command line history
 set ruler			" show the cursor position all the time
 set number			" Show line numbers
 set laststatus=2	" Always show the statusline
+set colorcolumn=0
 "set cursorline      " Highlight current line
 
 " Suffixes that get lower priority when doing tab completion for filenames.
@@ -86,6 +87,9 @@ Plugin 'vim-airline/vim-airline-themes'
 " show current branch in airline
 Plugin 'tpope/vim-fugitive'
 
+" nice python syntax highlighting
+Plugin 'achimnol/python-syntax'
+
 " Allow easy rst editing
 Bundle 'Rykka/riv.vim'
 
@@ -104,6 +108,8 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_python_pylint_args = "--disable C0111,C0330,E501,R0201 -j 4"
+let g:syntastic_python_flake8_args = "--max-line-length 99 --max-complexity 15"
+let g:syntastic_aggregate_errors = 1
 
 """ airline settings
 " show statusline all the time
@@ -113,4 +119,5 @@ let g:airline_extensions = ['branch', 'tabline']
 
 " }}} Plugin options
 
-set colorcolumn=0
+nmap <leader>c :nohl<CR>:SyntasticReset<CR>
+nmap <leader>g :YcmCompleter GoToDefinition<CR>
