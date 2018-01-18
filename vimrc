@@ -92,6 +92,8 @@ Plugin 'achimnol/python-syntax'
 " Allow easy rst editing
 Bundle 'Rykka/riv.vim'
 
+" Smart indents for python
+Plugin 'Vimjas/vim-python-pep8-indent'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
