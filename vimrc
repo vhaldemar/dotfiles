@@ -6,14 +6,14 @@
 set t_Co=256 " Force 256 colors
 colorscheme xoria256-my
 
-set nocompatible	" Use Vim defaults instead of 100% vi compatibility 
+set nocompatible	" Use Vim defaults instead of 100% vi compatibility
 filetype off                  " required
 set encoding=utf-8
 set fileencodings=utf-8,cp1251,koi8-r
 
 set backspace=indent,eol,start	" more powerful backspacing
 " set linebreak		" Don't wrap words by default
-" set textwidth=0		" Don't wrap lines by default 
+" set textwidth=0		" Don't wrap lines by default
 set backupcopy=yes	" Keep a backup file
 set backupdir=~/.vim/backup
 
@@ -57,11 +57,10 @@ set nofoldenable
 
 " Filetypes {{{
 
-" au BufRead,BufNewFile job* set filetype=mrproc
+au BufWritePre * :%s/\s\+$//e " autoremove trailing whitestspaces
+
+au VimEnter *.py :Python2Syntax
 au BufRead,BufNewFile *.py set expandtab shiftwidth=4
-au BufRead,BufNewFile *.page set filetype=pandoc
-au BufRead,BufNewFile *.html set filetype=htmldjango expandtab shiftwidth=2
-au BufRead,BufNewFile *.{c,cpp,cxx,h,hpp,hxx} set filetype=google.cpp
 
 " Do not annoy while typing '\'
 "au BufRead,BufNewFile *.pl,*.pm let maplocalleader="`"
@@ -122,3 +121,5 @@ let g:airline_extensions = ['branch', 'tabline']
 
 nmap <leader>c :nohl<CR>:SyntasticReset<CR>
 nmap <leader>g :YcmCompleter GoToDefinition<CR>
+
+let python_highlight_all = 1
