@@ -55,18 +55,6 @@ set listchars=tab:→\ ,trail:·
 
 set nofoldenable
 
-" Filetypes {{{
-
-au BufWritePre * :%s/\s\+$//e " autoremove trailing whitestspaces
-
-au VimEnter *.py :Python2Syntax
-au BufRead,BufNewFile *.py set expandtab shiftwidth=4
-
-" Do not annoy while typing '\'
-"au BufRead,BufNewFile *.pl,*.pm let maplocalleader="`"
-" }}} Filetypes
-
-
 " Vundle {{{
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -89,7 +77,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'achimnol/python-syntax'
 
 " Allow easy rst editing
-Bundle 'Rykka/riv.vim'
+Plugin 'Rykka/riv.vim'
 
 " Smart indents for python
 Plugin 'Vimjas/vim-python-pep8-indent'
@@ -107,7 +95,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_python_pylint_args = "--disable C0111,C0330,E501,R0201 -j 4"
+let g:syntastic_python_pylint_args = "--disable C0111,C0330,E501,R0201,too-few-public-methods,too-many-arguments,invalid-name,arguments-differ,undefined-variable -j 4"
 let g:syntastic_python_flake8_args = "--max-line-length 99 --max-complexity 15"
 let g:syntastic_aggregate_errors = 1
 
@@ -117,9 +105,24 @@ set laststatus=2
 let g:airline_theme = 'luna'
 let g:airline_extensions = ['branch', 'tabline']
 
+""" riv settings
+let g:riv_fold_level = -1
+
 " }}} Plugin options
 
-nmap <leader>c :nohl<CR>:SyntasticReset<CR>
+nmap <leader>c :nohl<CR>:SyntasticReset<CR>:pclose<CR>
 nmap <leader>g :YcmCompleter GoToDefinition<CR>
 
-let python_highlight_all = 1
+" Filetypes {{{
+
+au BufWritePre * :%s/\s\+$//e " autoremove trailing whitestspaces
+
+au BufRead,BufNewFile *.py :Python2Syntax
+au BufRead,BufNewFile *.py set expandtab shiftwidth=4
+au BufRead,BufNewFile *.py let python_highlight_all=1
+
+" Do not annoy while typing '\'
+"au BufRead,BufNewFile *.pl,*.pm let maplocalleader="`"
+" }}} Filetypes
+
+
