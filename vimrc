@@ -77,7 +77,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'achimnol/python-syntax'
 
 " Allow easy rst editing
-Plugin 'Rykka/riv.vim'
+" Plugin 'Rykka/riv.vim'
 
 " Smart indents for python
 Plugin 'Vimjas/vim-python-pep8-indent'
@@ -95,7 +95,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_python_pylint_args = "--disable C0111,C0330,E501,R0201,too-few-public-methods,too-many-arguments,invalid-name,arguments-differ,undefined-variable -j 4"
+let g:syntastic_python_pylint_args = "--disable C0111,C0330,E501,R0201,too-few-public-methods,too-many-arguments,invalid-name,arguments-differ,undefined-variable,too-many-ancestors,line-too-long -j 4"
 let g:syntastic_python_flake8_args = "--max-line-length 99 --max-complexity 15"
 let g:syntastic_aggregate_errors = 1
 
